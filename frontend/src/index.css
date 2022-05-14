@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
 :root {
   --color-primary: #4D41C0;
 }
 
 * {
-    box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
 }
 
-html, body {
-    background-color: #fff;
+html,
+body {
+  background-image: url('./assets/img/papel-de-parede-area-de-churrasco-marrom-e-branco.jpg');
 }
 
-a, a:hover {
+a,
+a:hover {
   text-decoration: none;
   color: unset;
 }

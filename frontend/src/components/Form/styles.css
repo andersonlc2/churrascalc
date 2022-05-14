@@ -1,0 +1,19 @@
+.container-form {
+    opacity: 1;
+    width: 90%;
+    height: 600px;
+    margin: 80px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.container-form-dados {
+    border: 3px rgb(177, 6, 15) solid;
+    border-radius: 10px;
+    width: 960px;
+    box-shadow: 1px 1px 5px black;
+    background-color: #fff;
+}
+
+
+
