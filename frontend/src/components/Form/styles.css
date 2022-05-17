@@ -8,12 +8,10 @@
 }
 
 .container-form-dados {
-    border: 3px rgb(177, 6, 15) solid;
+    border: 3px rgb(216, 224, 224) solid;
     border-radius: 10px;
     width: 960px;
     box-shadow: 1px 1px 5px black;
     background-color: #fff;
+    padding: 28px;
 }
-
-
-
