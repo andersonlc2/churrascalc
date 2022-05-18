@@ -1,9 +1,18 @@
 import './styles..css';
 
 
-function FormBebidas() {
+type Props = {
+    page : number,
+    onChange : Function
+}
+
+function FormBebidas({ page, onChange } : Props) {
 
     const bebidas = ['Água', 'Cachaça', 'Cerveja', 'Refrigerante', 'Suco', 'Vinho', 'Vodka', 'Wiskey'];
+
+    const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+    }
 
     return (
         <div className='container-form-pessoas'>
@@ -13,7 +22,7 @@ function FormBebidas() {
             <p>Para ter certeza do sucesso do seu churrasco, escolha as bebidas que não podem faltar e lembre de gelar bem antes de servir. Aprecie com moderação.</p>
             <hr />
             <div className='container-form-pessoas-area'>
-                <form >
+                <form onSubmit={handleSubmit} >
                     <div className='container-form-pessoas-area-form'>
 
                         {bebidas.map(bebida =>
@@ -33,8 +42,8 @@ function FormBebidas() {
 
                     </div>
                     <div className='container-form-pessoas-area-submit'>
-                        <button type="submit" className="btn btn-primary" disabled>Voltar</button>
-                        <button type="submit" className="btn btn-primary">Finalizar</button>
+                        <button type="submit" className="btn btn-primary" onClick={() => {onChange(page -1)}}>Voltar</button>
+                        <button type="submit" className="btn btn-primary" onClick={() => {onChange(page +1)}}>Finalizar</button>
                     </div>
 
                 </form>

@@ -1,9 +1,18 @@
 import './styles..css';
 
 
-function FormComp() {
+type Props = {
+    page : number,
+    onChange : Function
+}
+
+function FormComp( { page, onChange } : Props ) {
 
     const comp = ['Arroz', 'Farofa', 'Maionese', 'Pão de Alho', 'Queijo Coalho', 'Vinagrete'];
+
+    const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+    }
 
     return (
         <div className='container-form-pessoas'>
@@ -13,7 +22,7 @@ function FormComp() {
             <p>Descobrir novos sabores é fácil quando você pode contar com alguns acompanhamentos. Assim como a carne e os vegetais, eles são importantes para agradar os convidados e tornar o momento ainda mais especial.</p>
             <hr />
             <div className='container-form-pessoas-area'>
-                <form >
+                <form onSubmit={handleSubmit}>
                     <div className='container-form-pessoas-area-form'>
 
                         {comp.map(acompanhamento =>
@@ -33,8 +42,8 @@ function FormComp() {
 
                     </div>
                     <div className='container-form-pessoas-area-submit'>
-                        <button type="submit" className="btn btn-primary" disabled>Voltar</button>
-                        <button type="submit" className="btn btn-primary">Próximo</button>
+                        <button type="submit" className="btn btn-primary" onClick={() => {onChange(page -1)}}>Voltar</button>
+                        <button type="submit" className="btn btn-primary" onClick={() => {onChange(page +1)}}>Próximo</button>
                     </div>
 
                 </form>

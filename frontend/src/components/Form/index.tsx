@@ -17,15 +17,15 @@ function Form() {
     }
     const forms = [
         <FormQuant page={pageNumber} onChange={alterPage}/>,
-        <FormCarnes />,
-        <FormComp />,
-        <FormSupr />,
-        <FormBebidas />,
-        <Resultado />
+        <FormCarnes page={pageNumber} onChange={alterPage}/>,
+        <FormComp page={pageNumber} onChange={alterPage}/>,
+        <FormSupr page={pageNumber} onChange={alterPage}/>,
+        <FormBebidas page={pageNumber} onChange={alterPage}/>,
+        <Resultado page={pageNumber} onChange={alterPage}/>
     ]
 
     
-    const [form, setForm] = useState(forms[0]);
+    const [form, setForm] = useState(forms[pageNumber]);
 
     useEffect(() => {
         setForm(forms[pageNumber]);

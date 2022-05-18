@@ -5,7 +5,12 @@ import { ReactComponent as PigIcon } from 'assets/img/pig.svg';
 import './styles..css';
 
 
-function FormCarnes() {
+type Props = {
+    page : number,
+    onChange : Function
+}
+
+function FormCarnes({ page, onChange } : Props) {
 
     const bovina = {
         icon: <CowIcon />,
@@ -24,6 +29,10 @@ function FormCarnes() {
 
     const carnes = [bovina, suina, frango];
 
+    const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+    }
+
     return (
         <div className='container-form-pessoas'>
             <div className='container-form-pessoas-title'>
@@ -32,7 +41,7 @@ function FormCarnes() {
             <p>Vários cortes de carne e opções de vegetais para fazer o seu churrasco. Garanta a melhor experiência para os seus convidados, escolha com sabedoria:</p>
             <hr />
             <div className='container-form-pessoas-area'>
-                <form >
+                <form onSubmit={handleSubmit}>
                     <div className='container-form-pessoas-area-form'>
 
                         {carnes.map(tipo => (tipo.cortes.map(corte => (
@@ -55,8 +64,8 @@ function FormCarnes() {
 
                     </div>
                     <div className='container-form-pessoas-area-submit'>
-                        <button type="submit" className="btn btn-primary" disabled>Voltar</button>
-                        <button type="submit" className="btn btn-primary">Próximo</button>
+                        <button type="submit" className="btn btn-primary" onClick={() => onChange(page -1)}>Voltar</button>
+                        <button type="submit" className="btn btn-primary" onClick={() => onChange(page +1)}>Próximo</button>
                     </div>
 
                 </form>
