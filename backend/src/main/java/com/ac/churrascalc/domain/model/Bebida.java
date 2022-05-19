@@ -1,6 +1,5 @@
 package com.ac.churrascalc.domain.model;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -10,25 +9,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_carne")
-public class Carne implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+@Table(name = "tb_bebida")
+public class Bebida {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private String tipo;
+	private Double litros;
 
-	public Carne() {
+	public Bebida() {
 
 	}
 
-	public Carne(Long id, String nome, String tipo) {
+	public Bebida(Long id, String nome, Double litros) {
 		this.id = id;
 		this.nome = nome;
-		this.tipo = tipo;
+		this.litros = litros;
 	}
 
 	public Long getId() {
@@ -47,12 +44,12 @@ public class Carne implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public Double getLitros() {
+		return litros;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setLitros(Double litros) {
+		this.litros = litros;
 	}
 
 	@Override
@@ -68,7 +65,7 @@ public class Carne implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Carne other = (Carne) obj;
+		Bebida other = (Bebida) obj;
 		return Objects.equals(id, other.id);
 	}
 

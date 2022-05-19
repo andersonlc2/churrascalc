@@ -1,22 +1,21 @@
 package com.ac.churrascalc.domain.dto;
 
-import com.ac.churrascalc.domain.model.Carne;
+import com.ac.churrascalc.domain.model.Suprimento;
 
-public class CarneDTO {
+public class SuprimentoDTO {
 
 	private Long id;
 	private String nome;
-	private String tipo;
-	private String quantidade;
+	private Double quantidade;
 
-	public CarneDTO() {
+	public SuprimentoDTO() {
 
 	}
 
-	public CarneDTO(Carne obj) {
+	public SuprimentoDTO(Suprimento obj) {
 		this.id = obj.getId();
 		this.nome = obj.getNome();
-		this.tipo = obj.getTipo();
+		this.quantidade = obj.getQuantidade();
 	}
 
 	public Long getId() {
@@ -35,19 +34,11 @@ public class CarneDTO {
 		this.nome = nome;
 	}
 
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-	public String getQuantidade() {
+	public Double getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(String quantidade) {
+	public void setQuantidade(Double quantidade) {
 		this.quantidade = quantidade;
 	}
 

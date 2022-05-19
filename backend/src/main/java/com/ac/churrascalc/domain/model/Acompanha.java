@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_carne")
-public class Carne implements Serializable {
+@Table(name = "tb_acompanha")
+public class Acompanha implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -19,16 +19,18 @@ public class Carne implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private String tipo;
+	private Double quantAdulto;
+	private Double quantCrianca;
 
-	public Carne() {
+	public Acompanha() {
 
 	}
 
-	public Carne(Long id, String nome, String tipo) {
+	public Acompanha(Long id, String nome, Double quantAdulto, Double quantCrianca) {
 		this.id = id;
 		this.nome = nome;
-		this.tipo = tipo;
+		this.quantAdulto = quantAdulto;
+		this.quantCrianca = quantCrianca;
 	}
 
 	public Long getId() {
@@ -47,12 +49,20 @@ public class Carne implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public Double getQuantAdulto() {
+		return quantAdulto;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setQuantAdulto(Double quantAdulto) {
+		this.quantAdulto = quantAdulto;
+	}
+
+	public Double getQuantCrianca() {
+		return quantCrianca;
+	}
+
+	public void setQuantCrianca(Double quantCrianca) {
+		this.quantCrianca = quantCrianca;
 	}
 
 	@Override
@@ -68,7 +78,7 @@ public class Carne implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Carne other = (Carne) obj;
+		Acompanha other = (Acompanha) obj;
 		return Objects.equals(id, other.id);
 	}
 

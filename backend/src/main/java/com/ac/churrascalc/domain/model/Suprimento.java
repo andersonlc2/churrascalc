@@ -10,25 +10,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_carne")
-public class Carne implements Serializable {
+@Table(name = "tb_suprimento")
+public class Suprimento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private String tipo;
+	private Double quantidade;
 
-	public Carne() {
+	public Suprimento() {
 
 	}
 
-	public Carne(Long id, String nome, String tipo) {
+	public Suprimento(Long id, String nome, Double quantidade) {
 		this.id = id;
 		this.nome = nome;
-		this.tipo = tipo;
+		this.quantidade = quantidade;
 	}
 
 	public Long getId() {
@@ -47,12 +46,12 @@ public class Carne implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public Double getQuantidade() {
+		return quantidade;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setQuantidade(Double quantidade) {
+		this.quantidade = quantidade;
 	}
 
 	@Override
@@ -68,7 +67,7 @@ public class Carne implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Carne other = (Carne) obj;
+		Suprimento other = (Suprimento) obj;
 		return Objects.equals(id, other.id);
 	}
 
