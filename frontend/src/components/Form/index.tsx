@@ -29,6 +29,7 @@ function Form() {
 
     useEffect(() => {
         setForm(forms[pageNumber]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pageNumber]);
 
     return (
