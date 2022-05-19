@@ -1,17 +1,12 @@
 package com.ac.churrascalc.domain.model;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,19 +21,15 @@ public class Churrasco implements Serializable {
 	private Integer homem;
 	private Integer mulher;
 	private Integer crianca;
-	
-	@OneToMany(mappedBy = "churras")
-	private Set<Carne> carnes = new HashSet<>();
 
 	public Churrasco() {
 	}
 
-	public Churrasco(Long id, Integer homem, Integer mulher, Integer crianca, Set<Carne> carnes) {
+	public Churrasco(Long id, Integer homem, Integer mulher, Integer crianca) {
 		this.id = id;
 		this.homem = homem;
 		this.mulher = mulher;
 		this.crianca = crianca;
-		this.carnes = carnes;
 	}
 
 	public Long getId() {
@@ -73,20 +64,6 @@ public class Churrasco implements Serializable {
 		this.crianca = crianca;
 	}
 
-	public Set<Carne> getCarnes() {
-		return carnes;
-	}
-
-	public Map<Carne, Double> getQuanthomens() {
-		var gramasPorHomem = 0.500;
-		var grupoCarnes = new HashMap<Carne, Double>();
-		
-		var gramasPorCarne = this.carnes.size() / gramasPorHomem;
-		
-		this.carnes.stream().map(carne -> grupoCarnes.put(carne, gramasPorCarne));
-		return grupoCarnes;
-	}
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
