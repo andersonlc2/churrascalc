@@ -90,6 +90,16 @@ public class ChurrasService {
 			bebidas.add(new BebidaDTO(bebidaRepository.findByNome(c.getNome()).get()));
 		}
 
+		for (BebidaDTO bebida : bebidas) {
+			if (bebida.getNome().equals("Cerveja")) {
+				bebida.setLitros(bebida.getLitros() * adultos);
+			}
+
+			if (bebida.getNome().equals("Refrigerante")) {
+				bebida.setLitros(bebida.getLitros() * (adultos + criancas));
+			}
+		}
+
 		churras.setBebidas(bebidas);
 
 		return churras;
