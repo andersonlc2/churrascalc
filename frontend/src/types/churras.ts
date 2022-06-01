@@ -8,18 +8,19 @@ export type Carne = {
     id: number;
     nome: string;
     tipo: string;
+    quantidade: number;
 }
 
 export type Acompanhamentos = {
     id: string;
     nome: string;
-    quantidade: string;
+    quantidade: number;
 }
 
 export type Suprimentos = { 
     id: string,
     nome: string,
-    quantidade: string
+    quantidade: number
 }
 
 export type Bebidas = {

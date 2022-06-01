@@ -85,6 +85,8 @@ function Form() {
     useEffect(() => {
  
         setForm(forms[pageNumber]);
+        setChurras(churrasco);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pageNumber]);
 
