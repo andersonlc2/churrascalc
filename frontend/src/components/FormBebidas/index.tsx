@@ -1,17 +1,41 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Bebidas } from 'types/churras';
+import { BASE_URL } from 'utils/requests';
 import './styles..css';
 
 
 type Props = {
     page : number,
-    onChange : Function
+    onChange : Function,
+    addBebidas : Function
 }
 
-function FormBebidas({ page, onChange } : Props) {
+function FormBebidas({ page, onChange, addBebidas } : Props) {
 
-    const bebidas = ['Água', 'Cachaça', 'Cerveja', 'Refrigerante', 'Suco', 'Vinho', 'Vodka', 'Wiskey'];
+    const [bebidas, setBebidas] = useState<Bebidas[]>([]);
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/bebidas`)
+        .then(response => {
+            setBebidas(response.data);
+        })
+    }, [page])
 
     const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        const listBebidas : Bebidas[] = [];
+
+        bebidas.forEach(bebida => {
+            var element = document.getElementById(bebida.id) as HTMLInputElement;
+
+            if (element.checked) {
+                listBebidas.push(bebida);
+            }
+        })
+
+        addBebidas(listBebidas);
     }
 
     return (
@@ -29,10 +53,10 @@ function FormBebidas({ page, onChange } : Props) {
                         (
 
                             <div className='container-form-pessoas-area-form-buttons'>
-                                <input type="checkbox" className="btn-check" id={bebida} autoComplete="off" />
-                                <label className="btn btn-outline-danger" htmlFor={bebida}>
+                                <input type="checkbox" className="btn-check" id={bebida.id} autoComplete="off" />
+                                <label className="btn btn-outline-danger" htmlFor={bebida.id}>
                                     <div className='teste'>
-                                        <small>{bebida}</small>
+                                        <small>{bebida.nome}</small>
                                     </div>
                                 </label>
                             </div>

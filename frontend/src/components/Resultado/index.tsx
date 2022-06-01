@@ -1,15 +1,19 @@
+import { Churras } from 'types/churras';
 import './styles..css';
 
 
 type Props = {
     page : number,
-    onChange : Function
+    onChange : Function,
+    churrasco: Churras
 }
 
-function Resultado({ page, onChange } : Props) {
+function Resultado({ page, onChange, churrasco } : Props) {
 
     const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        console.log(churrasco);
     }
     
     return (
@@ -21,8 +25,18 @@ function Resultado({ page, onChange } : Props) {
             <div className='container-form-pessoas-area'>
                 <form onSubmit={handleSubmit} >
                     <div className='container-form-pessoas-area-form'>
-
-
+                        <div>
+                            <table >
+                                <tr>
+                                    <td>
+                                        Produto
+                                    </td>
+                                    <td>
+                                        Quantdade
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
 
                     </div>
                     <div className='container-form-pessoas-area-submit'>

@@ -1,17 +1,42 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Acompanhamentos } from 'types/churras';
+import { BASE_URL } from 'utils/requests';
 import './styles..css';
 
 
 type Props = {
     page : number,
-    onChange : Function
+    onChange : Function,
+    addComp: Function
 }
 
-function FormComp( { page, onChange } : Props ) {
+function FormComp( { page, onChange, addComp } : Props ) {
 
-    const comp = ['Arroz', 'Farofa', 'Maionese', 'Pão de Alho', 'Queijo Coalho', 'Vinagrete'];
+    const [ comp, setComp ] = useState<Acompanhamentos[]>([]);
+
+    useEffect(() => {
+        
+        axios.get(`${BASE_URL}/acompanhamentos`)
+        .then(response => {
+            setComp(response.data);
+        })
+    }, [page]);
 
     const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        const listComp : Acompanhamentos[] = [];
+
+        comp.forEach(acompanhamento => {
+            var element = document.getElementById(acompanhamento.id) as HTMLInputElement;
+
+            if (element.checked) {
+                listComp.push(acompanhamento);
+            }
+        })
+
+        addComp(listComp);
     }
 
     return (
@@ -29,10 +54,10 @@ function FormComp( { page, onChange } : Props ) {
                         (
 
                             <div className='container-form-pessoas-area-form-buttons'>
-                                <input type="checkbox" className="btn-check" id={acompanhamento} autoComplete="off" />
-                                <label className="btn btn-outline-danger" htmlFor={acompanhamento}>
+                                <input type="checkbox" className="btn-check" id={acompanhamento.id} autoComplete="off" />
+                                <label className="btn btn-outline-danger" htmlFor={acompanhamento.id}>
                                     <div className='teste'>
-                                        <small>{acompanhamento}</small>
+                                        <small>{acompanhamento.nome}</small>
                                     </div>
                                 </label>
                             </div>

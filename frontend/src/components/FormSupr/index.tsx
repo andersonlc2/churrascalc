@@ -1,17 +1,41 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Suprimentos } from 'types/churras';
+import { BASE_URL } from 'utils/requests';
 import './styles..css';
 
 
 type Props = {
     page : number,
-    onChange : Function
+    onChange : Function,
+    addSuprimentos : Function
 }
 
-function FormSupr({ page, onChange } : Props) {
+function FormSupr({ page, onChange, addSuprimentos } : Props) {
 
-    const supr = ['Carvão', 'Copos', 'Gelo', 'Guardanapos', 'Limão', 'Sal Grosso', 'Pratos', 'Talheres'];
+    const [suprimentos, setSuprimentos] = useState<Suprimentos[]>([]);
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/suprimentos`)
+        .then(response => {
+            setSuprimentos(response.data);
+        })
+    },[page])
 
     const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        const listSupri : Suprimentos[] = [];
+
+        suprimentos.forEach(suprimento => {
+            var element = document.getElementById(suprimento.id) as HTMLInputElement;
+
+            if (element.checked) {
+                listSupri.push(suprimento);
+            }
+        })
+
+        addSuprimentos(listSupri);
     }
 
     return (
@@ -25,14 +49,14 @@ function FormSupr({ page, onChange } : Props) {
                 <form onSubmit={handleSubmit} >
                     <div className='container-form-pessoas-area-form'>
 
-                        {supr.map(suprimento =>
+                        {suprimentos.map(suprimento =>
                         (
 
                             <div className='container-form-pessoas-area-form-buttons'>
-                                <input type="checkbox" className="btn-check" id={suprimento} autoComplete="off" />
-                                <label className="btn btn-outline-danger" htmlFor={suprimento}>
+                                <input type="checkbox" className="btn-check" id={suprimento.id} autoComplete="off" />
+                                <label className="btn btn-outline-danger" htmlFor={suprimento.id}>
                                     <div className='teste'>
-                                        <small>{suprimento}</small>
+                                        <small>{suprimento.nome}</small>
                                     </div>
                                 </label>
                             </div>

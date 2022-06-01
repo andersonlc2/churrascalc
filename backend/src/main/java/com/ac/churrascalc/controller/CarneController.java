@@ -13,7 +13,7 @@ import com.ac.churrascalc.domain.service.CarneService;
 @RestController
 @RequestMapping("/carnes")
 public class CarneController {
-	
+
 	@Autowired
 	private CarneService service;
 

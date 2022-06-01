@@ -6,18 +6,21 @@ import './styles..css';
 
 type Props = {
     page : number,
-    onChange : Function
+    onChange : Function,
+    addPessoas : Function
 }
 
-function FormQuant( {page, onChange} : Props) {
+function FormQuant( {page, onChange, addPessoas} : Props) {
 
         
     const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
-        const homens = (event.target as any).homens.value;
-        
-        console.log(homens);
+        addPessoas({
+            homens : (event.target as any).homens.value,
+            mulheres: (event.target as any).mulheres.value,
+            criancas: (event.target as any).criancas.value
+        })
     }
 
     return (
