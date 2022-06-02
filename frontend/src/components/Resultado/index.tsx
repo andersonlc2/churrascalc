@@ -16,15 +16,17 @@ function Resultado({ page, onChange, churrasco } : Props) {
     const [calculo, setCalculo] = useState<Churras>();
 
     useEffect(() => {
+
+        console.log(churrasco);
         
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
             method: 'PUT',
             url: '/churras/calcular',
             data: {
-                "homem": churrasco.homem,
-                "mulher": churrasco.mulher,
-                "crianca": churrasco.crianca,
+                "homem": churrasco.homem ? churrasco.homem : 0,
+                "mulher": churrasco.mulher ? churrasco.mulher : 0,
+                "crianca": churrasco.crianca ? churrasco.crianca : 0,
                 "carnes": churrasco.carnes,
                 "acompanhamentos": churrasco.acompanhamentos,
                 "suprimentos": churrasco.suprimentos,
@@ -84,8 +86,8 @@ function Resultado({ page, onChange, churrasco } : Props) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {calculo?.carnes.map(carnes => (
-                                        <tr>
+                                    {calculo?.carnes.map((carnes, index) => (
+                                        <tr key={index}>
                                             <td>{carnes.nome}</td>
                                             <td>{carnes.quantidade}</td>
                                         </tr>
@@ -98,8 +100,8 @@ function Resultado({ page, onChange, churrasco } : Props) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {calculo?.acompanhamentos.map(comp => (
-                                        <tr>
+                                    {calculo?.acompanhamentos.map((comp, index) => (
+                                        <tr key={index}>
                                             <td>{comp.nome}</td>
                                             <td>{comp.quantidade}</td>
                                         </tr>
@@ -112,8 +114,8 @@ function Resultado({ page, onChange, churrasco } : Props) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {calculo?.suprimentos.map(supri => (
-                                        <tr>
+                                    {calculo?.suprimentos.map((supri, index) => (
+                                        <tr key={index}>
                                             <td>{supri.nome}</td>
                                             <td>{supri.quantidade}</td>
                                         </tr>
@@ -126,8 +128,8 @@ function Resultado({ page, onChange, churrasco } : Props) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {calculo?.bebidas.map(bebidas => (
-                                        <tr>
+                                    {calculo?.bebidas.map((bebidas, index) => (
+                                        <tr key={index}>
                                             <td>{bebidas.nome}</td>
                                             <td>{bebidas.litros}</td>
                                         </tr>
@@ -138,7 +140,7 @@ function Resultado({ page, onChange, churrasco } : Props) {
                         </div>
 
                     </div>
-                    <div className='container-form-pessoas-area-submit'>
+                    <div className='container-form-pessoas-area-submit-result'>
                         <button type="submit" className="btn btn-primary" onClick={() => onChange(page = 0)}>Novo Cálculo</button>
                     </div>
 

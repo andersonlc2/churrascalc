@@ -41,14 +41,14 @@
     flex-wrap: wrap;
 }   
 
-.container-form-pessoas-area-submit {
+.container-form-pessoas-area-submit-result {
     height: 128px;
     display: flex;
     align-items: flex-end;
-    justify-content: space-between;
+    justify-content: center;
 }
 
-.container-form-pessoas-area-submit button {
+.container-form-pessoas-area-submit-result button {
     font-size: 12px;
     width: 78px;
     border-radius: 3px;

@@ -23,16 +23,6 @@ function Form() {
     const [supri, setSupri] = useState<Suprimentos[]>([]);
     const [beb, setBeb] = useState<Bebidas[]>([]);
 
-    const [churras, setChurras] = useState<Churras>({
-        homem : 0,
-        mulher : 0,
-        crianca : 0,
-        carnes: [],
-        acompanhamentos: [],
-        suprimentos: [],
-        bebidas: []
-    });
-
     const alterPage = ( newPage : number) => {
         setPageNumber(newPage);
     }
@@ -76,19 +66,18 @@ function Form() {
         <FormComp page={pageNumber} onChange={alterPage} addComp={addAcompanhamentos}/>,
         <FormSupr page={pageNumber} onChange={alterPage} addSuprimentos={addSuprimentos}/>,
         <FormBebidas page={pageNumber} onChange={alterPage} addBebidas={addBebidas}/>,
-        <Resultado page={pageNumber} onChange={alterPage} churrasco={churras}/>
+        <Resultado page={pageNumber} onChange={alterPage} churrasco={churrasco}/>
     ]
 
     
     const [form, setForm] = useState(forms[pageNumber]);
 
-    useEffect(() => {
- 
+    useEffect(() => { 
         setForm(forms[pageNumber]);
-        setChurras(churrasco);
+
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pageNumber]);
+    }, [pageNumber]); 
 
 
 

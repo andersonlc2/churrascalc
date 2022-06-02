@@ -24,18 +24,23 @@ function FormBebidas({ page, onChange, addBebidas } : Props) {
 
     const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+    }
 
+    const onChangePage = () => {
         const listBebidas : Bebidas[] = [];
 
-        bebidas.forEach(bebida => {
-            var element = document.getElementById(bebida.id) as HTMLInputElement;
+        bebidas.forEach(b => {
+            var element = document.getElementById(b.id) as HTMLInputElement;
+
+            console.log(element.checked);
 
             if (element.checked) {
-                listBebidas.push(bebida);
+                listBebidas.push(b);
             }
         })
 
         addBebidas(listBebidas);
+        onChange(page +1);
     }
 
     return (
@@ -49,10 +54,10 @@ function FormBebidas({ page, onChange, addBebidas } : Props) {
                 <form onSubmit={handleSubmit} >
                     <div className='container-form-pessoas-area-form'>
 
-                        {bebidas.map(bebida =>
+                        {bebidas.map((bebida, index) =>
                         (
 
-                            <div className='container-form-pessoas-area-form-buttons'>
+                            <div className='container-form-pessoas-area-form-buttons' key={index}>
                                 <input type="checkbox" className="btn-check" id={bebida.id} autoComplete="off" />
                                 <label className="btn btn-outline-danger" htmlFor={bebida.id}>
                                     <div className='teste'>
@@ -67,7 +72,7 @@ function FormBebidas({ page, onChange, addBebidas } : Props) {
                     </div>
                     <div className='container-form-pessoas-area-submit'>
                         <button type="submit" className="btn btn-primary" onClick={() => {onChange(page -1)}}>Voltar</button>
-                        <button type="submit" className="btn btn-primary" onClick={() => {onChange(page +1)}}>Finalizar</button>
+                        <button type="submit" className="btn btn-primary" onClick={onChangePage}>Finalizar</button>
                     </div>
 
                 </form>

@@ -24,6 +24,7 @@ function FormCarnes({ page, onChange, addCarnes } : Props) {
         axios.get(`${BASE_URL}/carnes`)
         .then(response => {
             setCarnes(response.data);
+
         })
     }, [page]);
 
@@ -39,7 +40,9 @@ function FormCarnes({ page, onChange, addCarnes } : Props) {
 
     const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+    }
 
+    const onChangePage = () => {
         const listCarnes : Carne[] = [];
 
         carnes.forEach(carne => {
@@ -51,6 +54,7 @@ function FormCarnes({ page, onChange, addCarnes } : Props) {
         })
         
         addCarnes(listCarnes);
+        onChange(page +1);
     }
 
     
@@ -66,10 +70,10 @@ function FormCarnes({ page, onChange, addCarnes } : Props) {
                 <form onSubmit={handleSubmit}>
                     <div className='container-form-pessoas-area-form'>
 
-                        {carnes.map(carne => (
+                        {carnes.map((carne, index) => (
                             (
 
-                                <div className='container-form-pessoas-area-form-buttons'>
+                                <div className='container-form-pessoas-area-form-buttons' key={index}>
                                     <input type="checkbox" className="btn-check" id={carne.id.toString()} autoComplete="off"/>
                                     <label className="btn btn-outline-danger" htmlFor={carne.id.toString()}>
                                         <div className='teste'>
@@ -87,7 +91,7 @@ function FormCarnes({ page, onChange, addCarnes } : Props) {
                     </div>
                     <div className='container-form-pessoas-area-submit'>
                         <button type="submit" className="btn btn-primary" onClick={() => onChange(page -1)}>Voltar</button>
-                        <button type="submit" className="btn btn-primary" onClick={() => onChange(page +1)}>Próximo</button>
+                        <button type="submit" className="btn btn-primary" onClick={onChangePage}>Próximo</button>
                     </div>
 
                 </form>

@@ -24,7 +24,9 @@ function FormSupr({ page, onChange, addSuprimentos } : Props) {
 
     const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+    }
 
+    const onChangePage = () => {
         const listSupri : Suprimentos[] = [];
 
         suprimentos.forEach(suprimento => {
@@ -36,6 +38,7 @@ function FormSupr({ page, onChange, addSuprimentos } : Props) {
         })
 
         addSuprimentos(listSupri);
+        onChange(page +1);
     }
 
     return (
@@ -49,10 +52,10 @@ function FormSupr({ page, onChange, addSuprimentos } : Props) {
                 <form onSubmit={handleSubmit} >
                     <div className='container-form-pessoas-area-form'>
 
-                        {suprimentos.map(suprimento =>
+                        {suprimentos.map((suprimento, index) =>
                         (
 
-                            <div className='container-form-pessoas-area-form-buttons'>
+                            <div className='container-form-pessoas-area-form-buttons' key={index}>
                                 <input type="checkbox" className="btn-check" id={suprimento.id} autoComplete="off" />
                                 <label className="btn btn-outline-danger" htmlFor={suprimento.id}>
                                     <div className='teste'>
@@ -67,7 +70,7 @@ function FormSupr({ page, onChange, addSuprimentos } : Props) {
                     </div>
                     <div className='container-form-pessoas-area-submit'>
                         <button type="submit" className="btn btn-primary" onClick={() => {onChange(page -1)}}>Voltar</button>
-                        <button type="submit" className="btn btn-primary" onClick={() => {onChange(page +1)}}>Próximo</button>
+                        <button type="submit" className="btn btn-primary" onClick={onChangePage}>Próximo</button>
                     </div>
 
                 </form>

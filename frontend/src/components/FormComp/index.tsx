@@ -25,7 +25,9 @@ function FormComp( { page, onChange, addComp } : Props ) {
 
     const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+    }
 
+    const onChangePage = () => {
         const listComp : Acompanhamentos[] = [];
 
         comp.forEach(acompanhamento => {
@@ -37,6 +39,7 @@ function FormComp( { page, onChange, addComp } : Props ) {
         })
 
         addComp(listComp);
+        onChange(page +1);
     }
 
     return (
@@ -50,10 +53,10 @@ function FormComp( { page, onChange, addComp } : Props ) {
                 <form onSubmit={handleSubmit}>
                     <div className='container-form-pessoas-area-form'>
 
-                        {comp.map(acompanhamento =>
+                        {comp.map((acompanhamento, index) =>
                         (
 
-                            <div className='container-form-pessoas-area-form-buttons'>
+                            <div className='container-form-pessoas-area-form-buttons' key={index}>
                                 <input type="checkbox" className="btn-check" id={acompanhamento.id} autoComplete="off" />
                                 <label className="btn btn-outline-danger" htmlFor={acompanhamento.id}>
                                     <div className='teste'>
@@ -68,7 +71,7 @@ function FormComp( { page, onChange, addComp } : Props ) {
                     </div>
                     <div className='container-form-pessoas-area-submit'>
                         <button type="submit" className="btn btn-primary" onClick={() => {onChange(page -1)}}>Voltar</button>
-                        <button type="submit" className="btn btn-primary" onClick={() => {onChange(page +1)}}>Próximo</button>
+                        <button type="submit" className="btn btn-primary" onClick={onChangePage}>Próximo</button>
                     </div>
 
                 </form>
