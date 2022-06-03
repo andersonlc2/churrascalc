@@ -40,7 +40,7 @@ public class AcompanhaDTO {
 
 	public String setQuantidade(Integer adultos, double gramasAdulto, Integer crianca, double gramasCrianca) {
 		double total = (adultos * gramasAdulto) + (crianca * gramasCrianca);
-		return total >= 1 ? String.format("%.1f Kg", total) : String.format("%.3f g", total);
+		return total >= 1 ? String.format("%.1f kg", total) : String.format("%.3f g", total);
 	}
 
 }

@@ -32,8 +32,6 @@ function FormBebidas({ page, onChange, addBebidas } : Props) {
         bebidas.forEach(b => {
             var element = document.getElementById(b.id) as HTMLInputElement;
 
-            console.log(element.checked);
-
             if (element.checked) {
                 listBebidas.push(b);
             }

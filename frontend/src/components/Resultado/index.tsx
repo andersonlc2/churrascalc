@@ -16,8 +16,6 @@ function Resultado({ page, onChange, churrasco } : Props) {
     const [calculo, setCalculo] = useState<Churras>();
 
     useEffect(() => {
-
-        console.log(churrasco);
         
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
@@ -46,7 +44,14 @@ function Resultado({ page, onChange, churrasco } : Props) {
     const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
     }
-    
+
+    const handleValues = (valor: number) => {
+        if (valor > 1) {
+            return `${Math.floor(valor)} kg`
+        }
+        return `${valor.toFixed(3)} g`
+    }
+
     return (
         <div className='container-form-pessoas'>
             <div className='container-form-pessoas-title'>
@@ -117,7 +122,7 @@ function Resultado({ page, onChange, churrasco } : Props) {
                                     {calculo?.suprimentos.map((supri, index) => (
                                         <tr key={index}>
                                             <td>{supri.nome}</td>
-                                            <td>{supri.quantidade}</td>
+                                            <td>{handleValues(supri.quantidade)}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -131,11 +136,11 @@ function Resultado({ page, onChange, churrasco } : Props) {
                                     {calculo?.bebidas.map((bebidas, index) => (
                                         <tr key={index}>
                                             <td>{bebidas.nome}</td>
-                                            <td>{bebidas.litros}</td>
+                                            <td>{bebidas.litros} L</td>
                                         </tr>
                                     ))}
                                 </tbody>
-                               
+
                             </table>
                         </div>
 

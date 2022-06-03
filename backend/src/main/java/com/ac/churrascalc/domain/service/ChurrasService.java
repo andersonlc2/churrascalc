@@ -61,7 +61,7 @@ public class ChurrasService {
 		}
 
 		listCarnes.stream().forEach(carne -> carne
-				.setQuantidade(total >= 1 ? String.format("%.1f Kg", total) : String.format("%.3f g", total)));
+				.setQuantidade(total >= 1 ? String.format("%.1f kg", total) : String.format("%.3f g", total)));
 
 		churras.setCarnes(listCarnes);
 
@@ -80,6 +80,8 @@ public class ChurrasService {
 		for (SuprimentoDTO c : churras.getSuprimentos()) {
 			supri.add(new SuprimentoDTO(supriRepository.findByNome(c.getNome()).get()));
 		}
+		
+		supri.stream().filter(x -> x.getId() == 1).forEach(x -> x.setQuantidade(total*quantTipos));
 
 		churras.setSuprimentos(supri);
 
