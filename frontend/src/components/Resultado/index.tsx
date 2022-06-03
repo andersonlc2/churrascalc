@@ -138,7 +138,7 @@ function Resultado({ page, onChange, churrasco } : Props) {
                                     {calculo?.bebidas.map((bebidas, index) => (
                                         <tr key={index}>
                                             <td>{bebidas.nome}</td>
-                                            <td>{bebidas.litros} L</td>
+                                            <td>{bebidas.litros.toFixed(1)} L</td>
                                         </tr>
                                     ))}
                                 </tbody>
