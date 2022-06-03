@@ -1,4 +1,5 @@
 import { Suprimentos } from 'types/churras';
+import { ReactComponent as SupriIcon } from 'assets/img/barb.svg';
 import './styles..css';
 
 
@@ -33,6 +34,7 @@ function FormSupr({ page, onChange, addSuprimentos, suprimentos } : Props) {
     return (
         <div className='container-form-pessoas'>
             <div className='container-form-pessoas-title'>
+                <SupriIcon className='title-icon' />
                 <h3>NÃO ESQUEÇA DOS SUPRIMENTOS</h3>
             </div>
             <p>Os suprimentos garantem um churrasco de respeito. Selecione tudo aquilo que precisa:</p>

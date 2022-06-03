@@ -1,6 +1,7 @@
 import { ReactComponent as ChickenIcon } from 'assets/img/chicken.svg';
 import { ReactComponent as CowIcon } from 'assets/img/cow.svg';
 import { ReactComponent as PigIcon } from 'assets/img/pig.svg';
+import { ReactComponent as MeatIcon } from 'assets/img/meat.svg';
 import { Carne } from 'types/churras';
 import './styles..css';
 
@@ -45,6 +46,7 @@ function FormCarnes({ page, onChange, addCarnes, carnes } : Props) {
     return (
         <div className='container-form-pessoas'>
             <div className='container-form-pessoas-title'>
+                <MeatIcon className='title-icon' />
                 <h3>QUAIS CARNES SERÃO SERVIDAS?</h3>
             </div>
             <p>Garanta a melhor experiência para os seus convidados, escolha os cortes com sabedoria:</p>

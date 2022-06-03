@@ -1,6 +1,7 @@
 import { ReactComponent as HomemIcon } from 'assets/img/homem.svg';
 import { ReactComponent as MulherIcon } from 'assets/img/mulher.svg';
 import { ReactComponent as CriancaIcon } from 'assets/img/crianca.svg';
+import { ReactComponent as FoodIcon } from 'assets/img/food.svg';
 
 import './styles..css';
 
@@ -26,6 +27,7 @@ function FormQuant( {page, onChange, addPessoas} : Props) {
     return (
         <div className='container-form-pessoas'>
             <div className='container-form-pessoas-title'>
+                <FoodIcon className='title-icon' />
                 <h3>QUANTAS PESSOAS VÃO AO CHURRAS?</h3>
             </div>
             <hr />

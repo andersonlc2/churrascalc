@@ -20,3 +20,12 @@
 h3 {
     text-align: center;
 }
+
+small {
+    font-weight: bold;
+}
+
+.title-icon {
+    min-width: 44px;
+    margin-bottom: 10px;
+}

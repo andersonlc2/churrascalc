@@ -1,4 +1,5 @@
 import { Acompanhamentos } from 'types/churras';
+import { ReactComponent as AcompIcon } from 'assets/img/acomp.svg';
 import './styles..css';
 
 
@@ -33,6 +34,7 @@ function FormComp( { page, onChange, addComp, comp } : Props ) {
     return (
         <div className='container-form-pessoas'>
             <div className='container-form-pessoas-title'>
+                <AcompIcon className='title-icon' />
                 <h3>VOCÊ PENSOU EM QUAIS ACOMPANHAMENTOS?</h3>
             </div>
             <p> Assim como as carnes os acompanhamentos são importantes para agradar os convidados e tornar o momento ainda mais especial.</p>

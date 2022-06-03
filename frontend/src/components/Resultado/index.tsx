@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 import { useEffect, useState } from 'react';
 import { Churras } from 'types/churras';
 import { BASE_URL } from 'utils/requests';
+import { ReactComponent as ResultIcon } from 'assets/img/party.svg';
 import './styles..css';
 
 
@@ -55,6 +56,7 @@ function Resultado({ page, onChange, churrasco } : Props) {
     return (
         <div className='container-form-pessoas'>
             <div className='container-form-pessoas-title'>
+                <ResultIcon  className='title-icon' />
                 <h3>TUDO PRONTO PARA O CHURRASCO!</h3>
             </div>
             <hr />

@@ -1,4 +1,5 @@
 import { Bebidas } from 'types/churras';
+import { ReactComponent as BebidaIcon } from 'assets/img/bebida.svg';
 import './styles..css';
 
 
@@ -33,6 +34,7 @@ function FormBebidas({ page, onChange, addBebidas, bebidas } : Props) {
     return (
         <div className='container-form-pessoas'>
             <div className='container-form-pessoas-title'>
+                <BebidaIcon className='title-icon' />
                 <h3>QUAIS BEBIDAS DESEJA SERVIR?</h3>
             </div>
             <p>Escolha as bebidas que não podem faltar e lembre de gelar bem antes de servir. Aprecie com moderação.</p>
