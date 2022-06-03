@@ -45,12 +45,12 @@ function FormCarnes({ page, onChange, addCarnes, carnes } : Props) {
     return (
         <div className='container-form-pessoas'>
             <div className='container-form-pessoas-title'>
-                <h3>QUAIS CARNES E VEGETAIS SERÃO SERVIDOS?</h3>
+                <h3>QUAIS CARNES SERÃO SERVIDAS?</h3>
             </div>
-            <p>Vários cortes de carne e opções de vegetais para fazer o seu churrasco. Garanta a melhor experiência para os seus convidados, escolha com sabedoria:</p>
+            <p>Garanta a melhor experiência para os seus convidados, escolha os cortes com sabedoria:</p>
             <hr />
-            <div className='container-form-pessoas-area'>
-                <form onSubmit={handleSubmit}>
+            <div>
+                <form onSubmit={handleSubmit} className='container-form-pessoas-area'>
                     <div className='container-form-pessoas-area-form'>
 
                         {carnes.map((carne, index) => (

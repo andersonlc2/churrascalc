@@ -35,10 +35,10 @@ function FormBebidas({ page, onChange, addBebidas, bebidas } : Props) {
             <div className='container-form-pessoas-title'>
                 <h3>QUAIS BEBIDAS DESEJA SERVIR?</h3>
             </div>
-            <p>Para ter certeza do sucesso do seu churrasco, escolha as bebidas que não podem faltar e lembre de gelar bem antes de servir. Aprecie com moderação.</p>
+            <p>Escolha as bebidas que não podem faltar e lembre de gelar bem antes de servir. Aprecie com moderação.</p>
             <hr />
-            <div className='container-form-pessoas-area'>
-                <form onSubmit={handleSubmit} >
+            <div>
+                <form onSubmit={handleSubmit} className='container-form-pessoas-area' >
                     <div className='container-form-pessoas-area-form'>
 
                         {bebidas.map((bebida, index) =>

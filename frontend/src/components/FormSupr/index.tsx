@@ -35,10 +35,10 @@ function FormSupr({ page, onChange, addSuprimentos, suprimentos } : Props) {
             <div className='container-form-pessoas-title'>
                 <h3>NÃO ESQUEÇA DOS SUPRIMENTOS</h3>
             </div>
-            <p>Não precisa de firula, mas o básico é essencial. Os suprimentos garantem um churrasco de respeito. Selecione tudo aquilo que precisa:</p>
+            <p>Os suprimentos garantem um churrasco de respeito. Selecione tudo aquilo que precisa:</p>
             <hr />
-            <div className='container-form-pessoas-area'>
-                <form onSubmit={handleSubmit} >
+            <div>
+                <form onSubmit={handleSubmit} className='container-form-pessoas-area'>
                     <div className='container-form-pessoas-area-form'>
 
                         {suprimentos.map((suprimento, index) =>
@@ -54,6 +54,7 @@ function FormSupr({ page, onChange, addSuprimentos, suprimentos } : Props) {
                             </div>
                         )
                         )}
+
 
                     </div>
                     <div className='container-form-pessoas-area-submit'>

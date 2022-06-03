@@ -92,7 +92,7 @@ function Form() {
     }, [pageNumber]); 
 
     return (
-        <div className="container-form row">
+        <div className="container-form">
             <div className='container-form-dados'>
                 {form}
             </div>

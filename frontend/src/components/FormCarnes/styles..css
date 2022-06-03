@@ -3,11 +3,6 @@
     flex-direction: column;
 }
 
-.container-form-pessoas p {
-    font-size: 12px;
-    text-align: center;
-}
-
 .container-form-pessoas-title {
     display: flex;
     align-items: center;
@@ -17,8 +12,9 @@
 
 .container-form-pessoas-area {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin: 24px;
 }
 
@@ -38,11 +34,10 @@
 
 .container-form-pessoas-area-form {
     display: flex;
-    flex-wrap: wrap;
-}   
+}
 
 .container-form-pessoas-area-submit {
-    height: 128px;
+    width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -52,17 +47,4 @@
     font-size: 12px;
     width: 78px;
     border-radius: 3px;
-}
-
-.container-form-pessoas-area-form-buttons {
-    margin: 5px;
-}
-
-.teste {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 80px;
-    width: 72px;
 }

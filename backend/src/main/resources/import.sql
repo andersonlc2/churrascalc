@@ -2,6 +2,10 @@
 INSERT INTO tb_carne(nome, tipo) VALUES ('Cupim', 'bovina');
 INSERT INTO tb_carne(nome, tipo) VALUES ('Alcatra', 'bovina');
 INSERT INTO tb_carne(nome, tipo) VALUES ('Picanha', 'bovina');
+INSERT INTO tb_carne(nome, tipo) VALUES ('Pernil', 'suina');
+INSERT INTO tb_carne(nome, tipo) VALUES ('Costela', 'suina');
+INSERT INTO tb_carne(nome, tipo) VALUES ('Lombo', 'suina');
+INSERT INTO tb_carne(nome, tipo) VALUES ('Asinhas', 'frango');
 
 INSERT INTO tb_acompanha(nome, quant_adulto, quant_crianca) VALUES ('Arroz', 0.400, 0.250);
 INSERT INTO tb_acompanha(nome, quant_adulto, quant_crianca) VALUES ('Farofa', 0.300, 0.150);

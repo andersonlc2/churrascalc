@@ -29,8 +29,8 @@ function FormQuant( {page, onChange, addPessoas} : Props) {
                 <h3>QUANTAS PESSOAS VÃO AO CHURRAS?</h3>
             </div>
             <hr />
-            <div className='container-form-pessoas-area' >
-                <form onSubmit={handleSubmit}>
+            <div >
+                <form onSubmit={handleSubmit} className='container-form-pessoas-area' >
                     <div className='container-form-pessoas-area-form'>
                         <div className='container-form-pessoas-inputs'>
                             <HomemIcon />
