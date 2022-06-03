@@ -1,26 +1,15 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { Bebidas } from 'types/churras';
-import { BASE_URL } from 'utils/requests';
 import './styles..css';
 
 
 type Props = {
     page : number,
     onChange : Function,
-    addBebidas : Function
+    addBebidas : Function,
+    bebidas: Bebidas[]
 }
 
-function FormBebidas({ page, onChange, addBebidas } : Props) {
-
-    const [bebidas, setBebidas] = useState<Bebidas[]>([]);
-
-    useEffect(() => {
-        axios.get(`${BASE_URL}/bebidas`)
-        .then(response => {
-            setBebidas(response.data);
-        })
-    }, [page])
+function FormBebidas({ page, onChange, addBebidas, bebidas } : Props) {
 
     const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();

@@ -1,32 +1,17 @@
 import { ReactComponent as ChickenIcon } from 'assets/img/chicken.svg';
 import { ReactComponent as CowIcon } from 'assets/img/cow.svg';
 import { ReactComponent as PigIcon } from 'assets/img/pig.svg';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { Carne } from 'types/churras';
-import { BASE_URL } from 'utils/requests';
-
 import './styles..css';
-
 
 type Props = {
     page : number,
     onChange : Function,
-    addCarnes : Function
+    addCarnes : Function,
+    carnes: Carne[]
 }
 
-function FormCarnes({ page, onChange, addCarnes } : Props) {
-
-    const [carnes, setCarnes] = useState<Carne[]>([]);
-
-    useEffect(() => {
-        
-        axios.get(`${BASE_URL}/carnes`)
-        .then(response => {
-            setCarnes(response.data);
-
-        })
-    }, [page]);
+function FormCarnes({ page, onChange, addCarnes, carnes } : Props) {
 
     const setIcon = (carne : Carne) => {
         if (carne.tipo === "bovina") {
@@ -57,8 +42,6 @@ function FormCarnes({ page, onChange, addCarnes } : Props) {
         onChange(page +1);
     }
 
-    
-
     return (
         <div className='container-form-pessoas'>
             <div className='container-form-pessoas-title'>
@@ -83,11 +66,8 @@ function FormCarnes({ page, onChange, addCarnes } : Props) {
                                     </label>
                                 </div>
                             )
-
                         )
                         )}
-
-
                     </div>
                     <div className='container-form-pessoas-area-submit'>
                         <button type="submit" className="btn btn-primary" onClick={() => onChange(page -1)}>Voltar</button>

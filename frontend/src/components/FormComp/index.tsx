@@ -1,27 +1,15 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { Acompanhamentos } from 'types/churras';
-import { BASE_URL } from 'utils/requests';
 import './styles..css';
 
 
 type Props = {
     page : number,
     onChange : Function,
-    addComp: Function
+    addComp: Function,
+    comp: Acompanhamentos[]
 }
 
-function FormComp( { page, onChange, addComp } : Props ) {
-
-    const [ comp, setComp ] = useState<Acompanhamentos[]>([]);
-
-    useEffect(() => {
-        
-        axios.get(`${BASE_URL}/acompanhamentos`)
-        .then(response => {
-            setComp(response.data);
-        })
-    }, [page]);
+function FormComp( { page, onChange, addComp, comp } : Props ) {
 
     const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();

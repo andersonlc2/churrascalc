@@ -7,12 +7,28 @@ import FormSupr from 'components/FormSupr';
 import Resultado from 'components/Resultado';
 import { useEffect, useState } from 'react';
 import { Acompanhamentos, Bebidas, Carne, Churras, Pessoas, Suprimentos } from 'types/churras';
+import { request } from 'utils/requests';
 
 
 import './styles.css';
 
 function Form() {
     const [pageNumber, setPageNumber] = useState(0);
+    
+    // Inicia a montagem dos forms
+    const [formCarne, setFormCarne] = useState([]);
+    const [formAcompanha, setFormAcompanha] = useState([]);
+    const [formSupri, setFormSupri] = useState([]);
+    const [formBebidas, setFormBebidas] = useState([]);
+
+    // Faz a chamada no back para montar os forms
+    useEffect(() => {
+        request('carnes', setFormCarne);
+        request('bebidas', setFormBebidas);
+        request('acompanhamentos', setFormAcompanha);
+        request('suprimentos', setFormSupri);
+    }, [])
+
     const [pessoas, setPessoas] = useState<Pessoas>({
         homens: 0,
         mulheres: 0,
@@ -58,28 +74,22 @@ function Form() {
         bebidas: beb
     }
 
-
-
     const forms = [
         <FormQuant page={pageNumber} onChange={alterPage} addPessoas={addPessoas}/>,
-        <FormCarnes page={pageNumber} onChange={alterPage} addCarnes={addCarnes}/>,
-        <FormComp page={pageNumber} onChange={alterPage} addComp={addAcompanhamentos}/>,
-        <FormSupr page={pageNumber} onChange={alterPage} addSuprimentos={addSuprimentos}/>,
-        <FormBebidas page={pageNumber} onChange={alterPage} addBebidas={addBebidas}/>,
+        <FormCarnes page={pageNumber} onChange={alterPage} addCarnes={addCarnes} carnes={formCarne}/>,
+        <FormComp page={pageNumber} onChange={alterPage} addComp={addAcompanhamentos} comp={formAcompanha}/>,
+        <FormSupr page={pageNumber} onChange={alterPage} addSuprimentos={addSuprimentos} suprimentos={formSupri} />,
+        <FormBebidas page={pageNumber} onChange={alterPage} addBebidas={addBebidas} bebidas={formBebidas}/>,
         <Resultado page={pageNumber} onChange={alterPage} churrasco={churrasco}/>
     ]
 
-    
     const [form, setForm] = useState(forms[pageNumber]);
 
     useEffect(() => { 
         setForm(forms[pageNumber]);
 
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pageNumber]); 
-
-
 
     return (
         <div className="container-form row">

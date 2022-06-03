@@ -1,26 +1,15 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { Suprimentos } from 'types/churras';
-import { BASE_URL } from 'utils/requests';
 import './styles..css';
 
 
 type Props = {
     page : number,
     onChange : Function,
-    addSuprimentos : Function
+    addSuprimentos : Function,
+    suprimentos: Suprimentos[]
 }
 
-function FormSupr({ page, onChange, addSuprimentos } : Props) {
-
-    const [suprimentos, setSuprimentos] = useState<Suprimentos[]>([]);
-
-    useEffect(() => {
-        axios.get(`${BASE_URL}/suprimentos`)
-        .then(response => {
-            setSuprimentos(response.data);
-        })
-    },[page])
+function FormSupr({ page, onChange, addSuprimentos, suprimentos } : Props) {
 
     const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -65,7 +54,6 @@ function FormSupr({ page, onChange, addSuprimentos } : Props) {
                             </div>
                         )
                         )}
-
 
                     </div>
                     <div className='container-form-pessoas-area-submit'>
